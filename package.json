@@ -1,0 +1,45 @@
+{
+  "name": "@alexfatalix/obsidian-cli-mcp",
+  "version": "0.1.0",
+  "description": "Local MCP server for Obsidian CLI",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "obsidian-cli-mcp": "./cli.js"
+  },
+  "files": [
+    "dist",
+    "cli.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build": "npm run clean && tsc",
+    "refresh-spec": "tsx scripts/refresh-spec.ts",
+    "start": "node cli.js",
+    "test": "npm run build && node --test",
+    "prepack": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "obsidian",
+    "obsidian-cli"
+  ],
+  "author": "alexfatalix Oleksii Kalmykov",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.4",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}
